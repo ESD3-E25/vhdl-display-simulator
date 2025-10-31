@@ -40,7 +40,7 @@ begin
             read(mif_line, temp_bv);
             temp_img(y,x) := to_stdlogicvector(temp_bv);
         end loop;
-        report "y: " & integer'image(y) severity note;
+        report "Imported line: " & integer'image(y) severity note;
     end loop;
     return temp_img;
 end function;

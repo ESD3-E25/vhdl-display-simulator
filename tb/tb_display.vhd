@@ -36,6 +36,10 @@ architecture rtl of tb_display is
     signal object2y : std_logic_vector(OBJECT_SIZE-1 downto 0) := std_logic_vector(to_unsigned(340, OBJECT_SIZE));
     signal backgrnd_rgb : std_logic_vector(PIXEL_SIZE-1 downto 0) := x"FFFF00"; -- yellow
 
+    -- Loaded image input
+    constant IMG_WIDTH  : integer := 1280;
+    constant IMG_HEIGHT : integer := 720;
+
 begin
 
     -- timing generator
@@ -50,13 +54,19 @@ begin
     --     port map(clk=>clk, video_active=>video_active, rgb=>rgb);
 
     -- connect object buffer
-    uut0 : entity work.objectbuffer(rtl)
-        generic map (OBJECT_SIZE=>OBJECT_SIZE, PIXEL_SIZE=>PIXEL_SIZE)
-        port map (video_active=>video_active, pixel_x=>pixel_x, pixel_y=>pixel_y,
-                  object1x=>object1x, object1y=>object1y,
-                  object2x=>object2x, object2y=>object2y,
-                  backgrnd_rgb=>backgrnd_rgb, rgb=>rgb);
+    -- uut0 : entity work.objectbuffer(rtl)
+    --     generic map (OBJECT_SIZE=>OBJECT_SIZE, PIXEL_SIZE=>PIXEL_SIZE)
+    --     port map (video_active=>video_active, pixel_x=>pixel_x, pixel_y=>pixel_y,
+    --               object1x=>object1x, object1y=>object1y,
+    --               object2x=>object2x, object2y=>object2y,
+    --               backgrnd_rgb=>backgrnd_rgb, rgb=>rgb);
 
+    -- connect image shower
+    uut0 : entity work.read_image(behavioral)
+        generic map (IMG_WIDTH=>IMG_WIDTH, IMG_HEIGHT=>IMG_HEIGHT,
+                    OBJECT_SIZE=>OBJECT_SIZE, PIXEL_SIZE=>PIXEL_SIZE)
+        port map (video_active=>video_active, pixel_x=>pixel_x,
+                    pixel_y=>pixel_y, rgb=>rgb);
     -- generate clock
     clk_generate:
     process

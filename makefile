@@ -10,6 +10,7 @@ VHDL_SOURCES = rtl/vga_timing_pkg.vhd
 VHDL_SOURCES += rtl/timing_generator.vhd
 VHDL_SOURCES += rtl/objectbuffer.vhd
 VHDL_SOURCES += rtl/pattern_generator.vhd
+VHDL_SOURCES += rtl/read_image.vhd
 
 TB = tb/$(ARCHNAME).vhd
 WORKDIR = debug

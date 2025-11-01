@@ -1,2 +1,4 @@
 debug/
+input/*
+!input/*.py
 rgb.txt

@@ -7,10 +7,12 @@ ARCHNAME = tb_display
 STOPTIME = 100ms
 
 VHDL_SOURCES = rtl/vga_timing_pkg.vhd
+VHDL_SOURCES += input/img_data_pkg.vhd # run python script to generate first
 VHDL_SOURCES += rtl/timing_generator.vhd
 VHDL_SOURCES += rtl/objectbuffer.vhd
 VHDL_SOURCES += rtl/pattern_generator.vhd
 VHDL_SOURCES += rtl/read_image.vhd
+
 
 TB = tb/$(ARCHNAME).vhd
 WORKDIR = debug

@@ -10,7 +10,7 @@ entity read_image is
     IMG_WIDTH      : natural := 1280;        
     IMG_HEIGHT      : natural := 720;
     OBJECT_SIZE     : natural := 16;
-    PIXEL_SIZE      : natural := 24;
+    PIXEL_SIZE      : natural := 24
   );
   port(
     video_active       : in  std_logic;
